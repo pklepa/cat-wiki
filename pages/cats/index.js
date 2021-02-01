@@ -9,7 +9,7 @@ export default function CatList({ catList }) {
         {catList.map((cat, index) => {
           return (
             <li key={index}>
-              <Link href={`/cats/${cat.name}`}>{cat.name}</Link>
+              <Link href={`/cats/${cat.id}`}>{cat.name}</Link>
             </li>
           );
         })}

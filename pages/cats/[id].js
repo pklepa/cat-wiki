@@ -3,8 +3,11 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 
-export default function Cat({ cat }) {
-  console.log(cat);
+export default function Cat({ data }) {
+  const [cat] = data[0].breeds;
+  const images = data.map((x) => {
+    return { url: x.url, width: x.width, height: x.height };
+  });
 
   return (
     <>
@@ -15,6 +18,10 @@ export default function Cat({ cat }) {
       <h1>Hello {cat.name}</h1>
       <p>{cat.description}</p>
 
+      <a href={cat.wikipedia_url}>Read more</a>
+
+      <img src={images[0].url} width="300" />
+
       <Link href="/cats">Go back</Link>
     </>
   );
@@ -23,12 +30,12 @@ export default function Cat({ cat }) {
 // Fetches API data before Next generates the page
 export async function getStaticProps({ params }) {
   const req = await fetch(
-    `https://api.thecatapi.com/v1/breeds/search?q=${params.id}`
+    `https://api.thecatapi.com/v1/images/search?breed_id=${params.id}&limit=9`
   );
   const data = await req.json();
 
   return {
-    props: { cat: data[0] },
+    props: { data: data },
   };
 }
 
@@ -40,7 +47,7 @@ export async function getStaticPaths() {
   const data = await req.json();
 
   const paths = data.map((cat) => {
-    return { params: { id: cat.name } };
+    return { params: { id: cat.id } };
   });
 
   return {
