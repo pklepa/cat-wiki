@@ -4,6 +4,8 @@ import Head from "next/head";
 import Link from "next/link";
 
 export default function Cat({ cat }) {
+  console.log(cat);
+
   return (
     <>
       <Head>
@@ -18,6 +20,7 @@ export default function Cat({ cat }) {
   );
 }
 
+// Fetches API data before Next generates the page
 export async function getStaticProps({ params }) {
   const req = await fetch(
     `https://api.thecatapi.com/v1/breeds/search?q=${params.id}`
@@ -29,6 +32,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
+// Tells Next how many and which pages will be generated through this dynamic url
 export async function getStaticPaths() {
   const req = await fetch(
     `https://api.thecatapi.com/v1/breeds?api_key=${process.env.CAT_API_KEY}`

@@ -18,6 +18,7 @@ export default function CatList({ catList }) {
   );
 }
 
+// Fetches API data before Next generates the page
 export async function getStaticProps() {
   const req = await fetch(
     `https://api.thecatapi.com/v1/breeds?api_key=${process.env.CAT_API_KEY}`
