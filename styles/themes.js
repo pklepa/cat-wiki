@@ -9,6 +9,13 @@ const theme = {
       500: "#78716C",
     },
   },
+
+  devices: {
+    mobile: `(min-width: 375px`,
+    sm_tablet: `(min-width: 500px)`,
+    tablet: `(min-width: 800px)`,
+    desktop: `(min-width: 1440px)`,
+  },
 };
 
 export default theme;
