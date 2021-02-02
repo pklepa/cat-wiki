@@ -38,61 +38,63 @@ export default function Home() {
 
           <h1>66+ Breeds for you to explore</h1>
 
-          <Link href="/cats/beng">
-            <div className="wrapper">
-              <div className="preview-img-wrapper">
-                <Image
-                  className="preview-img"
-                  src="/images/bengal.jpg"
-                  alt="Photo of a bengal cat"
-                  layout="fill"
-                />
+          <LinksContainer>
+            <Link href="/cats/beng">
+              <div className="wrapper">
+                <div className="preview-img-wrapper">
+                  <Image
+                    className="preview-img"
+                    src="/images/bengal.jpg"
+                    alt="Photo of a bengal cat"
+                    layout="fill"
+                  />
+                </div>
+                <span>Bengal</span>
               </div>
-              <span>Bengal</span>
-            </div>
-          </Link>
+            </Link>
 
-          <Link href="/cats/sava">
-            <div className="wrapper">
-              <div className="preview-img-wrapper">
-                <Image
-                  className="preview-img"
-                  src="/images/savannah.jpg"
-                  alt="Photo of a Savannah cat"
-                  layout="fill"
-                />
+            <Link href="/cats/sava">
+              <div className="wrapper">
+                <div className="preview-img-wrapper">
+                  <Image
+                    className="preview-img"
+                    src="/images/savannah.jpg"
+                    alt="Photo of a Savannah cat"
+                    layout="fill"
+                  />
+                </div>
+                <span>Savannah</span>
               </div>
-              <span>Savannah</span>
-            </div>
-          </Link>
+            </Link>
 
-          <Link href="/cats/norw">
-            <div className="wrapper">
-              <div className="preview-img-wrapper">
-                <Image
-                  className="preview-img"
-                  src="/images/norwegian.jpg"
-                  alt="Photo of a Norwegian Forest cat"
-                  layout="fill"
-                />
+            <Link href="/cats/norw">
+              <div className="wrapper">
+                <div className="preview-img-wrapper">
+                  <Image
+                    className="preview-img"
+                    src="/images/norwegian.jpg"
+                    alt="Photo of a Norwegian Forest cat"
+                    layout="fill"
+                  />
+                </div>
+                <span>Norwegian Forest Cat</span>
               </div>
-              <span>Norwegian Forest Cat</span>
-            </div>
-          </Link>
+            </Link>
 
-          <Link href="/cats/srex">
-            <div className="wrapper">
-              <div className="preview-img-wrapper">
-                <Image
-                  className="preview-img"
-                  src="/images/selkirk.jpg"
-                  alt="Photo of a Selkirk Rex cat"
-                  layout="fill"
-                />
+            <Link href="/cats/srex">
+              <div className="wrapper">
+                <div className="preview-img-wrapper">
+                  <Image
+                    className="preview-img"
+                    src="/images/selkirk.jpg"
+                    alt="Photo of a Selkirk Rex cat"
+                    layout="fill"
+                  />
+                </div>
+                <span>Selkirk Rex</span>
               </div>
-              <span>Selkirk Rex</span>
-            </div>
-          </Link>
+            </Link>
+          </LinksContainer>
 
           <button>
             See more <span></span>
@@ -279,33 +281,6 @@ const MainArticle = styled.section`
     margin-bottom: 2rem;
   }
 
-  & > .wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    .preview-img-wrapper {
-      width: 100%;
-      border-radius: 1rem;
-
-      min-height: 200px;
-      background-color: salmon;
-
-      position: relative;
-
-      .preview-img {
-        object-fit: cover;
-        border-radius: 1rem;
-      }
-    }
-
-    span {
-      margin: 0.5rem 0 2rem;
-      color: ${(props) => props.theme.colors.bg};
-      font-weight: 700;
-    }
-  }
-
   & > button {
     color: ${(props) => props.theme.colors.grey[500]};
     text-transform: uppercase;
@@ -317,6 +292,7 @@ const MainArticle = styled.section`
     border: none;
 
     align-self: center;
+    margin-top: 2rem;
 
     display: grid;
     grid-template-columns: auto auto;
@@ -327,6 +303,41 @@ const MainArticle = styled.section`
       width: 34px;
       height: 17px;
       background-image: url("/icons/Arrow.svg");
+    }
+  }
+`;
+
+const LinksContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2rem;
+  width: 100%;
+
+  position: relative;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .preview-img-wrapper {
+      width: 100%;
+      border-radius: 1rem;
+
+      min-height: 200px;
+
+      position: relative;
+
+      .preview-img {
+        object-fit: cover;
+        border-radius: 1rem;
+      }
+    }
+
+    span {
+      margin: 0.5rem 0;
+      color: ${(props) => props.theme.colors.bg};
+      font-weight: 700;
     }
   }
 `;
