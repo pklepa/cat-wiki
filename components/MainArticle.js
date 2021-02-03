@@ -7,71 +7,73 @@ import Image from 'next/image';
 function MainArticle() {
   return (
     <Container>
-      <span className="preface">Most Searched Breeds</span>
+      <Content>
+        <span className="preface">Most Searched Breeds</span>
 
-      <h1>66+ Breeds for you to explore</h1>
+        <h1>66+ Breeds for you to explore</h1>
 
-      <LinksContainer>
-        <Link href="/cats/beng">
-          <div className="wrapper">
-            <div className="preview-img-wrapper">
-              <Image
-                className="preview-img"
-                src="/images/bengal.jpg"
-                alt="Photo of a bengal cat"
-                layout="fill"
-              />
+        <LinksContainer>
+          <Link href="/cats/beng">
+            <div className="wrapper">
+              <div className="preview-img-wrapper">
+                <Image
+                  className="preview-img"
+                  src="/images/bengal.jpg"
+                  alt="Photo of a bengal cat"
+                  layout="fill"
+                />
+              </div>
+              <span>Bengal</span>
             </div>
-            <span>Bengal</span>
-          </div>
-        </Link>
+          </Link>
 
-        <Link href="/cats/sava">
-          <div className="wrapper">
-            <div className="preview-img-wrapper">
-              <Image
-                className="preview-img"
-                src="/images/savannah.jpg"
-                alt="Photo of a Savannah cat"
-                layout="fill"
-              />
+          <Link href="/cats/sava">
+            <div className="wrapper">
+              <div className="preview-img-wrapper">
+                <Image
+                  className="preview-img"
+                  src="/images/savannah.jpg"
+                  alt="Photo of a Savannah cat"
+                  layout="fill"
+                />
+              </div>
+              <span>Savannah</span>
             </div>
-            <span>Savannah</span>
-          </div>
-        </Link>
+          </Link>
 
-        <Link href="/cats/norw">
-          <div className="wrapper">
-            <div className="preview-img-wrapper">
-              <Image
-                className="preview-img"
-                src="/images/norwegian.jpg"
-                alt="Photo of a Norwegian Forest cat"
-                layout="fill"
-              />
+          <Link href="/cats/norw">
+            <div className="wrapper">
+              <div className="preview-img-wrapper">
+                <Image
+                  className="preview-img"
+                  src="/images/norwegian.jpg"
+                  alt="Photo of a Norwegian Forest cat"
+                  layout="fill"
+                />
+              </div>
+              <span>Norwegian Forest Cat</span>
             </div>
-            <span>Norwegian Forest Cat</span>
-          </div>
-        </Link>
+          </Link>
 
-        <Link href="/cats/srex">
-          <div className="wrapper">
-            <div className="preview-img-wrapper">
-              <Image
-                className="preview-img"
-                src="/images/selkirk.jpg"
-                alt="Photo of a Selkirk Rex cat"
-                layout="fill"
-              />
+          <Link href="/cats/srex">
+            <div className="wrapper">
+              <div className="preview-img-wrapper">
+                <Image
+                  className="preview-img"
+                  src="/images/selkirk.jpg"
+                  alt="Photo of a Selkirk Rex cat"
+                  layout="fill"
+                />
+              </div>
+              <span>Selkirk Rex</span>
             </div>
-            <span>Selkirk Rex</span>
-          </div>
-        </Link>
-      </LinksContainer>
+          </Link>
+        </LinksContainer>
 
-      <button>
-        See more <span></span>
-      </button>
+        <button className="btn-see-more">
+          See more <span></span>
+        </button>
+      </Content>
     </Container>
   );
 }
@@ -80,16 +82,29 @@ export default MainArticle;
 
 const Container = styled.section`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   width: 100%;
   margin-top: 2rem;
-  padding: 2rem;
   border-radius: 3rem;
 
   background-color: ${(props) => props.theme.colors.grey[300]};
 
-  & > .preface {
+  @media ${(props) => props.theme.devices.tablet} {
+    margin-top: 0;
+    border-radius: 0 350px 350px 0;
+  }
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 1440px);
+  min-height: 625px;
+  padding: 2rem;
+
+  .preface {
     color: ${(props) => props.theme.colors.grey[500]};
     font-weight: 500;
 
@@ -110,14 +125,14 @@ const Container = styled.section`
     }
   }
 
-  & > h1 {
+  h1 {
     color: ${(props) => props.theme.colors.bg};
     font-size: 2rem;
 
     margin-bottom: 2rem;
   }
 
-  & > button {
+  .btn-see-more {
     color: ${(props) => props.theme.colors.grey[500]};
     text-transform: uppercase;
     font-size: 1rem;
@@ -143,7 +158,18 @@ const Container = styled.section`
   }
 
   @media ${(props) => props.theme.devices.tablet} {
-    margin-top: 0;
+    padding-right: 6rem;
+    position: relative;
+
+    h1 {
+      max-width: 550px;
+    }
+
+    .btn-see-more {
+      position: absolute;
+      top: 142px;
+      right: 6rem;
+    }
   }
 `;
 
@@ -160,6 +186,8 @@ const LinksContainer = styled.div`
     flex-direction: column;
     width: 100%;
 
+    cursor: pointer;
+
     .preview-img-wrapper {
       width: 100%;
       border-radius: 1rem;
@@ -172,12 +200,39 @@ const LinksContainer = styled.div`
         object-fit: cover;
         border-radius: 1rem;
       }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        opacity: 0;
+
+        border-radius: 1rem;
+        background-color: ${(props) => props.theme.colors.accent};
+        height: 200px;
+        width: 40px;
+
+        transition: all 0.4s;
+      }
+
+      &:hover::before {
+        transform: translateY(-50%) translateX(-20px);
+        opacity: 1;
+      }
     }
 
     span {
       margin: 0.5rem 0;
       color: ${(props) => props.theme.colors.bg};
       font-weight: 700;
+    }
+  }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    .wrapper .preview-img-wrapper {
+      min-height: 250px;
     }
   }
 `;
