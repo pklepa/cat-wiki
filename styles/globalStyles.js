@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   /* RESET */
@@ -62,6 +62,10 @@ const GlobalStyles = createGlobalStyle`
   textarea,
   select {
     font: inherit;
+  }
+  
+  a {
+    text-decoration: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
