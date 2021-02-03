@@ -86,7 +86,7 @@ const Container = styled.section`
   justify-content: center;
 
   width: 100%;
-  margin-top: 2rem;
+  margin: 2rem 0 4rem;
   border-radius: 3rem;
 
   background-color: ${(props) => props.theme.colors.grey[300]};
@@ -207,19 +207,13 @@ const LinksContainer = styled.div`
         top: 50%;
         left: 0;
         transform: translateY(-50%);
-        opacity: 0;
 
         border-radius: 1rem;
-        background-color: ${(props) => props.theme.colors.accent};
-        height: 200px;
-        width: 40px;
+        background-color: ${(props) => props.theme.colors.accent.light};
+        height: 100%;
+        width: 100%;
 
         transition: all 0.4s;
-      }
-
-      &:hover::before {
-        transform: translateY(-50%) translateX(-20px);
-        opacity: 1;
       }
     }
 
@@ -227,6 +221,18 @@ const LinksContainer = styled.div`
       margin: 0.5rem 0;
       color: ${(props) => props.theme.colors.bg};
       font-weight: 700;
+      transition: all 0.4s;
+    }
+
+    &:hover,
+    &:focus {
+      .preview-img-wrapper::before {
+        transform: translateY(-50%) translateX(-10px);
+      }
+
+      span {
+        color: ${(props) => props.theme.colors.accent.dark};
+      }
     }
   }
 

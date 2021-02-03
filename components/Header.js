@@ -42,7 +42,7 @@ const HeaderContainer = styled.div`
     justify-content: space-between;
     padding: 0 2rem 0;
 
-    height: 70vh;
+    height: 80vh;
   }
 `;
 

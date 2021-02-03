@@ -1,7 +1,10 @@
 const theme = {
   colors: {
-    bg: '#050300',
-    accent: '#FDBA74',
+    bg: '#040608',
+    accent: {
+      light: '#FDBA74',
+      dark: '#FB923C',
+    },
     grey: {
       50: '#FAFAF9',
       200: '#E7E5E4',
