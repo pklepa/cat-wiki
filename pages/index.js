@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import Header from '../components/Header';
 import MainArticle from '../components/MainArticle';
+import FeaturedArticle from '../components/FeaturedArticle';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Container>
         <Header />
         <MainArticle />
+        <FeaturedArticle />
       </Container>
     </div>
   );

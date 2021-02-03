@@ -8,7 +8,7 @@ function MainArticle() {
   return (
     <Container>
       <Content>
-        <span className="preface">Most Searched Breeds</span>
+        <span className="preface">Complete Breed List</span>
 
         <h1>66+ Breeds for you to explore</h1>
 
@@ -86,7 +86,7 @@ const Container = styled.section`
   justify-content: center;
 
   width: 100%;
-  margin: 2rem 0 4rem;
+  margin: 2rem 0 2rem;
   border-radius: 3rem;
 
   background-color: ${(props) => props.theme.colors.grey[300]};
@@ -119,8 +119,8 @@ const Content = styled.div`
       left: 0;
 
       background-color: ${(props) => props.theme.colors.grey[500]};
-      width: 80px;
-      height: 4px;
+      width: 100px;
+      height: 5px;
       border-radius: 2px;
     }
   }
