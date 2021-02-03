@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import ExpandButton from './ExpandButton';
 
 function MainArticle() {
   return (
@@ -10,7 +11,9 @@ function MainArticle() {
       <Content>
         <span className="preface">Complete Breed List</span>
 
-        <h1>66+ Breeds for you to explore</h1>
+        <Link href="/cats">
+          <h1>66+ Breeds for you to explore</h1>
+        </Link>
 
         <LinksContainer>
           <Link href="/cats/beng">
@@ -70,9 +73,9 @@ function MainArticle() {
           </Link>
         </LinksContainer>
 
-        <button className="btn-see-more">
-          See more <span></span>
-        </button>
+        <Link href="/cats">
+          <ExpandButton text="See more" />
+        </Link>
       </Content>
     </Container>
   );
@@ -130,31 +133,17 @@ const Content = styled.div`
     font-size: 2rem;
 
     margin-bottom: 2rem;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover {
+      color: ${(props) => props.theme.colors.accent.dark};
+    }
   }
 
-  .btn-see-more {
-    color: ${(props) => props.theme.colors.grey[500]};
-    text-transform: uppercase;
-    font-size: 1rem;
-    font-weight: 600;
-
-    background: none;
-    outline: none;
-    border: none;
-
-    align-self: center;
+  .btn-expand {
     margin-top: 2rem;
-
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 0.5rem;
-    align-items: center;
-
-    span {
-      width: 34px;
-      height: 17px;
-      background-image: url('/icons/Arrow.svg');
-    }
+    align-self: center;
   }
 
   @media ${(props) => props.theme.devices.tablet} {
@@ -165,7 +154,7 @@ const Content = styled.div`
       max-width: 550px;
     }
 
-    .btn-see-more {
+    .btn-expand {
       position: absolute;
       top: 142px;
       right: 6rem;

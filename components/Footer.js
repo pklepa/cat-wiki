@@ -68,9 +68,14 @@ const LinksWrapper = styled.div`
 
   > * {
     color: ${(props) => props.theme.colors.grey[50]};
+    transition: 0.4s;
 
     &:not(:last-child) {
       margin-bottom: 1rem;
+    }
+
+    &:hover {
+      color: ${(props) => props.theme.colors.accent.dark};
     }
   }
 
@@ -100,6 +105,11 @@ const Credits = styled.div`
     a {
       color: ${(props) => props.theme.colors.grey[50]};
       font-weight: 700;
+      transition: 0.4s;
+
+      &:hover {
+        color: ${(props) => props.theme.colors.accent.dark};
+      }
     }
 
     &:not(:last-child) {

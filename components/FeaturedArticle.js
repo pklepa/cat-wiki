@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Image from 'next/image';
+import ExpandButton from './ExpandButton';
 
 function FeaturedArticle() {
   return (
@@ -15,9 +16,7 @@ function FeaturedArticle() {
             chemicals in your body which lower your stress and anxiety levels
           </p>
 
-          <button className="btn-read-more">
-            Read more <span></span>
-          </button>
+          <ExpandButton text="Read more" />
         </div>
 
         <div className="img-wrapper">
@@ -80,29 +79,8 @@ const Content = styled.div`
       font-weight: 500;
     }
 
-    .btn-read-more {
-      color: ${(props) => props.theme.colors.grey[500]};
-      text-transform: uppercase;
-      font-size: 1rem;
-      font-weight: 600;
-
-      background: none;
-      outline: none;
-      border: none;
-
-      align-self: center;
+    .btn-expand {
       margin-top: 2rem;
-
-      display: grid;
-      grid-template-columns: auto auto;
-      grid-gap: 0.5rem;
-      align-items: center;
-
-      span {
-        width: 34px;
-        height: 17px;
-        background-image: url('/icons/Arrow.svg');
-      }
     }
   }
 
