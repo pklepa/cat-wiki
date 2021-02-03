@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Footer() {
   return (
     <Container>
-      <LogoWrapper>
-        <Image src="/images/logo.svg" alt="Cat Wiki Logo" layout="fill" />
-      </LogoWrapper>
+      <Link href="/">
+        <LogoWrapper>
+          <Image src="/images/logo.svg" alt="Cat Wiki Logo" layout="fill" />
+        </LogoWrapper>
+      </Link>
 
       <LinksWrapper>
         <a href="#">About</a>
@@ -59,6 +62,12 @@ const LogoWrapper = styled.div`
   position: relative;
   width: 180px;
   height: 80px;
+  transition: 0.4s;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 `;
 
 const LinksWrapper = styled.div`

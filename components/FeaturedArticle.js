@@ -3,20 +3,25 @@ import styled from 'styled-components';
 
 import Image from 'next/image';
 import ExpandButton from './ExpandButton';
+import Link from 'next/link';
 
 function FeaturedArticle() {
   return (
     <Container>
       <Content>
         <div className="text-wrapper">
-          <h1>Why should you have a cat?</h1>
+          <Link href="/articles/why-should-you-have-a-cat">
+            <h1>Why should you have a cat?</h1>
+          </Link>
 
           <p>
             Having a cat around can actually trigger the release of calming
             chemicals in your body which lower your stress and anxiety levels
           </p>
 
-          <ExpandButton text="Read more" />
+          <Link href="/articles/why-should-you-have-a-cat">
+            <ExpandButton text="Read more" />
+          </Link>
         </div>
 
         <div className="img-wrapper">
@@ -60,6 +65,8 @@ const Content = styled.div`
       margin: 2.5rem 0 2rem;
 
       position: relative;
+      cursor: pointer;
+      transition: 0.4s;
 
       &::before {
         content: '';
@@ -71,6 +78,10 @@ const Content = styled.div`
         position: absolute;
         top: -1.5rem;
         left: 0;
+      }
+
+      &:hover {
+        color: ${(props) => props.theme.colors.accent.dark};
       }
     }
 
