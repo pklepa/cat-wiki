@@ -44,6 +44,11 @@ const Container = styled.section`
   border-radius: 3rem;
 
   background-color: ${(props) => props.theme.colors.grey[200]};
+
+  @media ${(props) => props.theme.devices.tablet} {
+    align-items: flex-end;
+    border-radius: 350px 0 0 350px;
+  }
 `;
 
 const Content = styled.div`
@@ -51,6 +56,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  width: min(100%, 1440px);
 
   .text-wrapper {
     display: flex;
@@ -102,5 +108,14 @@ const Content = styled.div`
     margin-top: 2rem;
     min-height: 300px;
     width: 100%;
+  }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    flex-direction: row-reverse;
+    padding-left: 6rem;
+
+    .text-wrapper {
+      margin-left: 2rem;
+    }
   }
 `;
