@@ -24,9 +24,13 @@ function FeaturedArticle() {
           </Link>
         </div>
 
-        <div className="img-wrapper">
+        <MobileImgWrapper>
           <Image src="/images/article-cat-2.png" width={300} height={485} />
-        </div>
+        </MobileImgWrapper>
+
+        <DesktopImgWrapper>
+          <Image src="/images/Mosaic.png" width={611} height={536} />
+        </DesktopImgWrapper>
       </Content>
     </Container>
   );
@@ -101,15 +105,6 @@ const Content = styled.div`
     }
   }
 
-  .img-wrapper {
-    display: flex;
-    justify-content: center;
-
-    margin-top: 2rem;
-    min-height: 300px;
-    width: 100%;
-  }
-
   @media ${(props) => props.theme.devices.tablet} {
     flex-direction: row-reverse;
     padding-left: 6rem;
@@ -117,5 +112,35 @@ const Content = styled.div`
     .text-wrapper {
       margin-left: 2rem;
     }
+  }
+`;
+
+const MobileImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  margin-top: 2rem;
+  min-height: 300px;
+  width: 100%;
+
+  @media ${props => props.theme.devices.tablet} {
+    display: none;
+  }
+`;
+
+const DesktopImgWrapper = styled.div`
+  display: none;
+
+  @media ${props => props.theme.devices.tablet} {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 611px;
+  }
+
+  @media ${props => props.theme.devices.laptop} {
+    margin-right: 2rem;
   }
 `;

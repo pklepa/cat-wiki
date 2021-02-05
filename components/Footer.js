@@ -54,7 +54,6 @@ const Container = styled.footer`
     justify-content: space-between;
     padding: 0 2rem 2rem;
 
-
     > *:not(:last-child) {
       margin-bottom: 0;
     }
