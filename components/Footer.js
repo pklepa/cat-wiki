@@ -43,6 +43,7 @@ const Container = styled.footer`
   align-items: center;
   padding: 2rem 2rem 4rem;
   width: 100%;
+  max-width: 1440px;
 
   > *:not(:last-child) {
     margin-bottom: 2rem;
@@ -51,6 +52,8 @@ const Container = styled.footer`
   @media ${(props) => props.theme.devices.tablet} {
     flex-direction: row;
     justify-content: space-between;
+    padding: 0 2rem 2rem;
+
 
     > *:not(:last-child) {
       margin-bottom: 0;
