@@ -28,7 +28,7 @@ export default function Cat({ data }) {
         </LogoWrapper>
 
         <HeroImgWrapper>
-          <Image src={images[0].url} className="main-img" alt="Cat Wiki Logo" layout="fill" />
+          <Image src={images[0].url} className="main-img" alt="Featured image of the breed" layout="fill" />
         </HeroImgWrapper>
 
         <Intro>
@@ -64,6 +64,20 @@ export default function Cat({ data }) {
 
         <Gallery>
           <SectionTitle>Other Photos</SectionTitle>
+          
+          {images.map((img, index) => {
+            return (
+              <div className="preview-img-wrapper">
+                <Image
+                  key={`gallery-img-${index}`}
+                  className="preview-img"
+                  src={img.url}
+                  alt="Photo of a Savannah cat"
+                  layout="fill"
+                />
+              </div>
+            )
+          })}
         </Gallery>
 
         <Footer />
@@ -268,4 +282,34 @@ const Gallery = styled.section`
 
   background-color: ${props => props.theme.colors.grey[200]};
   position: relative;  
+  
+  .preview-img-wrapper {
+    width: 100%;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+
+    min-height: 300px;
+
+    position: relative;
+
+    .preview-img {
+      object-fit: cover;
+      border-radius: 1rem;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+
+      border-radius: 1rem;
+      background-color: ${(props) => props.theme.colors.accent.light};
+      height: 100%;
+      width: 100%;
+
+      transition: all 0.4s;
+    }
+  }
 `;
