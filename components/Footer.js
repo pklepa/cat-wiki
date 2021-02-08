@@ -14,9 +14,9 @@ function Footer() {
       </Link>
 
       <LinksWrapper>
-        <a href="#">About</a>
-        <a href="#">Breed List</a>
-        <a href="#">Random</a>
+        <Link href="/about">About</Link>
+        <Link href="/cats">Full Cats List</Link>
+        <Link href="/random">Random Cat</Link>
       </LinksWrapper>
 
       <Credits>
