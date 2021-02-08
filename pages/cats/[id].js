@@ -55,53 +55,59 @@ export default function Cat({ data }) {
           </Intro>
         </div>
 
-        <Characteristics>
-          <SectionTitle>Breed Characteristics</SectionTitle>
+        <div className="characteristics-container">
+          <Characteristics>
+            <SectionTitle>Breed Characteristics</SectionTitle>
 
-          <StatsWrapper>
-            <CatStat title={'Adaptability'} level={cat.adaptability} />
-            <CatStat title={'Affection Level'} level={cat.affection_level} />
-            <CatStat title={'Child Friendly'} level={cat.child_friendly} />
-            <CatStat title={'Dog Friendly'} level={cat.dog_friendly} />
-            <CatStat title={'Energy Level'} level={cat.energy_level} />
-            <CatStat title={'Grooming'} level={cat.grooming} />
-            <CatStat title={'Health Issues'} level={cat.health_issues} />
-            <CatStat title={'Intelligence'} level={cat.intelligence} />
-            <CatStat title={'Shedding Level'} level={cat.shedding_level} />
-            <CatStat title={'Social Needs'} level={cat.social_needs} />
-            <CatStat
-              title={'Stranger Friendly'}
-              level={cat.stranger_friendly}
-            />
-            <CatStat title={'Vocalisation'} level={cat.vocalisation} />
-          </StatsWrapper>
+            <StatsWrapper>
+              <CatStat title={'Adaptability'} level={cat.adaptability} />
+              <CatStat title={'Affection Level'} level={cat.affection_level} />
+              <CatStat title={'Child Friendly'} level={cat.child_friendly} />
+              <CatStat title={'Dog Friendly'} level={cat.dog_friendly} />
+              <CatStat title={'Energy Level'} level={cat.energy_level} />
+              <CatStat title={'Grooming'} level={cat.grooming} />
+              <CatStat title={'Health Issues'} level={cat.health_issues} />
+              <CatStat title={'Intelligence'} level={cat.intelligence} />
+              <CatStat title={'Shedding Level'} level={cat.shedding_level} />
+              <CatStat title={'Social Needs'} level={cat.social_needs} />
+              <CatStat
+                title={'Stranger Friendly'}
+                level={cat.stranger_friendly}
+              />
+              <CatStat title={'Vocalisation'} level={cat.vocalisation} />
+            </StatsWrapper>
 
-          <a href={cat.wikipedia_url}>
-            <ExpandButton text="Read more" />
-          </a>
-        </Characteristics>
+            <a href={cat.wikipedia_url}>
+              <ExpandButton text="Read more" />
+            </a>
+          </Characteristics>
+        </div>
 
-        <Gallery>
-          <SectionTitle>Other Photos</SectionTitle>
+        <div className="gallery-container">
+          <Gallery>
+            <SectionTitle>Other Photos</SectionTitle>
 
-          <div className="images-container">
-            {images.map((img, index) => {
-              if (index === 0) return;
+            <div className="images-container">
+              {images.map((img, index) => {
+                if (index === 0) return;
 
-              return (
-                <div className="preview-img-wrapper">
-                  <Image
-                    key={`gallery-img-${index}`}
-                    className="preview-img"
-                    src={img.url}
-                    alt="Photo of a Savannah cat"
-                    layout="fill"
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </Gallery>
+                return (
+                  <a href={img.url} rel="noreferrer">
+                    <div className="preview-img-wrapper">
+                      <Image
+                        key={`gallery-img-${index}`}
+                        className="preview-img"
+                        src={img.url}
+                        alt="Photo of a Savannah cat"
+                        layout="fill"
+                      />
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </Gallery>
+        </div>
 
         <Footer />
       </Container>
@@ -151,12 +157,29 @@ const Container = styled.main`
     align-items: center;
   }
 
+  .characteristics-container,
+  .gallery-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   @media ${(props) => props.theme.devices.tablet} {
     .intro-container {
       padding: 0 2rem;
       max-width: 1440px;
       flex-direction: row;
       justify-content: space-between;
+    }
+
+    .characteristics-container,
+    .gallery-container {
+      padding: 0 2rem;
+      max-width: 1440px;
+    }
+
+    .gallery-container {
+      margin-bottom: 1rem;
     }
   }
 `;
@@ -186,6 +209,10 @@ const HeroImgWrapper = styled.div`
     width: 100%;
 
     transition: all 0.4s;
+  }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    margin-left: 10px;
   }
 `;
 
@@ -295,6 +322,17 @@ const Characteristics = styled.section`
   a {
     align-self: center;
   }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    max-width: 1440px;
+    padding: 3rem;
+    border-radius: 2rem 0 2rem 2rem;
+    background-color: #f3edea;
+
+    &::before {
+      display: none;
+    }
+  }
 `;
 
 const StatsWrapper = styled.div`
@@ -321,7 +359,7 @@ const Gallery = styled.section`
 
   .images-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 2rem;
     width: 100%;
   }
@@ -352,6 +390,10 @@ const Gallery = styled.section`
       width: 100%;
 
       transition: all 0.4s;
+    }
+
+    &:hover::before {
+      transform: translateY(-50%) translateX(-10px);
     }
   }
 `;
