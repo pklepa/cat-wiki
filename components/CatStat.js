@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
-function CatStat({title, level}) {
+function CatStat({ title, level }) {
   return (
     <Container>
       <h1>{title}:</h1>
@@ -14,22 +14,21 @@ function CatStat({title, level}) {
         <StatBullet active={level >= 5} />
       </div>
     </Container>
-  )
+  );
 }
 
-export default CatStat
+export default CatStat;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 2rem;
 
   h1 {
     font-size: 1rem;
     font-weight: 600;
-    color: ${props => props.theme.colors.bg};
-    margin-bottom: .8rem;
+    color: ${(props) => props.theme.colors.bg};
+    margin-bottom: 0.8rem;
   }
 
   div {
@@ -43,7 +42,7 @@ const Container = styled.div`
 `;
 
 const StatBullet = styled.div`
-  background-color: ${props => props.active ? "#696059" : "#C1BCBA"};
+  background-color: ${(props) => (props.active ? '#696059' : '#C1BCBA')};
   height: 12px;
   border-radius: 15px;
 `;
