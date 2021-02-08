@@ -291,9 +291,6 @@ const SectionTitle = styled.h2`
     border-radius: 3px;
     background-color: ${(props) => props.theme.colors.grey[500]};
   }
-
-  @media ${(props) => props.theme.devices.tablet} {
-  }
 `;
 
 const Characteristics = styled.section`

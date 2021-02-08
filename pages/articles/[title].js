@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import Footer from '../../components/Footer';
+import SlimHeader from '../../components/SlimHeader';
 
 export default function Article() {
   return (
@@ -8,6 +9,8 @@ export default function Article() {
       <Head>
         <title>Why should you have a cat? - Cat Wiki</title>
       </Head>
+
+      <SlimHeader />
 
       <h1>Why should you have a cat?</h1>
 
