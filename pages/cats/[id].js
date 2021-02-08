@@ -1,12 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Head from 'next/head';
 import Image from 'next/image';
-import styled from 'styled-components';
+
+import SlimHeader from '../../components/SlimHeader';
 import CatStat from '../../components/CatStat';
 import ExpandButton from '../../components/ExpandButton';
 import Footer from '../../components/Footer';
-import SlimHeader from '../../components/SlimHeader';
 
 export default function Cat({ data }) {
   const [cat] = data[0].breeds;
@@ -24,33 +25,35 @@ export default function Cat({ data }) {
       <Container>
         <SlimHeader />
 
-        <HeroImgWrapper>
-          <Image
-            src={images[0].url}
-            className="main-img"
-            alt="Featured image of the breed"
-            layout="fill"
-          />
-        </HeroImgWrapper>
+        <div className="intro-container">
+          <HeroImgWrapper>
+            <Image
+              src={images[0].url}
+              className="main-img"
+              alt="Featured image of the breed"
+              layout="fill"
+            />
+          </HeroImgWrapper>
 
-        <Intro>
-          <Title>{cat.name}</Title>
+          <Intro>
+            <Title>{cat.name}</Title>
 
-          <SectionTitle>Breed Overview</SectionTitle>
-          <p>{cat.description}</p>
-          <span>
-            <strong>Temperament: </strong>
-            {cat.temperament}
-          </span>
-          <span>
-            <strong>Origin: </strong>
-            {cat.origin}
-          </span>
-          <span>
-            <strong>Lifespan: </strong>
-            {cat.life_span} years
-          </span>
-        </Intro>
+            <SectionTitle>Breed Overview</SectionTitle>
+            <p>{cat.description}</p>
+            <span>
+              <strong>Temperament: </strong>
+              {cat.temperament}
+            </span>
+            <span>
+              <strong>Origin: </strong>
+              {cat.origin}
+            </span>
+            <span>
+              <strong>Lifespan: </strong>
+              {cat.life_span} years
+            </span>
+          </Intro>
+        </div>
 
         <Characteristics>
           <SectionTitle>Breed Characteristics</SectionTitle>
@@ -141,6 +144,21 @@ const Container = styled.main`
   align-items: center;
 
   background-color: ${(props) => props.theme.colors.bg};
+
+  .intro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    .intro-container {
+      padding: 0 2rem;
+      max-width: 1440px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
 `;
 
 const HeroImgWrapper = styled.div`
@@ -193,6 +211,19 @@ const Intro = styled.section`
     color: ${(props) => props.theme.colors.bg};
     margin-bottom: 1rem;
   }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    margin-top: 0;
+    margin-left: 2rem;
+    padding: 3rem 2rem 2rem 10rem;
+    border-radius: 15rem 2rem 0 0;
+
+    background-color: ${(props) => props.theme.colors.grey[200]};
+
+    h2 {
+      display: none;
+    }
+  }
 `;
 
 const Title = styled.h1`
@@ -204,6 +235,15 @@ const Title = styled.h1`
   text-align: center;
   font-size: 2rem;
   font-weight: 600;
+
+  @media ${(props) => props.theme.devices.tablet} {
+    position: static;
+    transform: none;
+    color: ${(props) => props.theme.colors.bg};
+    text-align: left;
+
+    margin-bottom: 1rem;
+  }
 `;
 
 const SectionTitle = styled.h2`
