@@ -52,7 +52,7 @@ const Container = styled.footer`
   @media ${(props) => props.theme.devices.tablet} {
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 2rem 2rem;
+    padding: 2rem;
 
     > *:not(:last-child) {
       margin-bottom: 0;

@@ -177,10 +177,6 @@ const Container = styled.main`
       padding: 0 2rem;
       max-width: 1440px;
     }
-
-    .gallery-container {
-      margin-bottom: 1rem;
-    }
   }
 `;
 
@@ -334,7 +330,7 @@ const Characteristics = styled.section`
 
 const StatsWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 350px);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
   gap: 2rem 4rem;
   width: 100%;
   margin-bottom: 3rem;

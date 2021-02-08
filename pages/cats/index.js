@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Footer from '../../components/Footer';
@@ -13,23 +14,42 @@ export default function CatList({ catList }) {
         <title>Full Breed List - Cat Wiki</title>
       </Head>
 
-      <SlimHeader />
-
       <Container>
-        <h1>Breed List</h1>
+        <SlimHeader />
 
-        <ul>
-          {catList.map((cat, index) => {
-            return (
-              <li key={index}>
-                <Link href={`/cats/${cat.id}`}>{cat.name}</Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Content>
+          <h1>Breed List</h1>
+
+          <ul>
+            {catList.map((cat, index) => {
+              return (
+                <li key={index}>
+                  <Link href={`/cats/${cat.id}`}>
+                    <div className="wrapper">
+                      <div className="preview-img-wrapper">
+                        <Image
+                          className="preview-img"
+                          src={
+                            cat.image && cat.image.url
+                              ? cat.image.url
+                              : '/images/nopreview.png'
+                          }
+                          alt="Photo of a Norwegian Forest cat"
+                          layout="fill"
+                        />
+                      </div>
+
+                      <span>{cat.name}</span>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </Content>
+
+        <Footer />
       </Container>
-
-      <Footer />
     </>
   );
 }
@@ -46,7 +66,17 @@ export async function getStaticProps() {
   };
 }
 
-const Container = styled.article`
+const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media ${(props) => props.theme.devices.tablet} {
+    padding: 0 2rem;
+  }
+`;
+
+const Content = styled.article`
   display: flex;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.grey[200]};
@@ -77,6 +107,10 @@ const Container = styled.article`
   }
 
   ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-content: center;
     list-style: none;
     padding: 0;
 
@@ -86,6 +120,67 @@ const Container = styled.article`
       > * {
         color: ${(props) => props.theme.colors.grey[500]};
         font-weight: 500;
+      }
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        cursor: pointer;
+
+        .preview-img-wrapper {
+          width: 100%;
+          border-radius: 1rem;
+
+          min-height: 200px;
+
+          position: relative;
+
+          .preview-img {
+            object-fit: cover;
+            border-radius: 1rem;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+
+            border-radius: 1rem;
+            background-color: ${(props) => props.theme.colors.accent.light};
+            height: 100%;
+            width: 100%;
+
+            transition: all 0.4s;
+          }
+        }
+
+        span {
+          margin: 0.5rem 0;
+          color: ${(props) => props.theme.colors.bg};
+          font-weight: 700;
+          transition: all 0.4s;
+        }
+
+        &:hover,
+        &:focus {
+          .preview-img-wrapper::before {
+            transform: translateY(-50%) translateX(-10px);
+          }
+
+          span {
+            color: ${(props) => props.theme.colors.accent.dark};
+          }
+        }
+      }
+
+      @media ${(props) => props.theme.devices.tablet} {
+        .wrapper .preview-img-wrapper {
+          min-height: 250px;
+        }
       }
     }
   }
