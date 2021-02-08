@@ -326,7 +326,7 @@ const Characteristics = styled.section`
   @media ${(props) => props.theme.devices.tablet} {
     max-width: 1440px;
     padding: 3rem;
-    border-radius: 2rem 0 2rem 2rem;
+    border-radius: 2rem 0 0 0;
     background-color: #f3edea;
 
     &::before {
@@ -395,5 +395,11 @@ const Gallery = styled.section`
     &:hover::before {
       transform: translateY(-50%) translateX(-10px);
     }
+  }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    margin: 0 0 2rem;
+    padding: 3rem;
+    border-radius: 0 0 2rem 2rem;
   }
 `;
