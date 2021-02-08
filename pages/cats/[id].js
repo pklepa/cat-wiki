@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Head from 'next/head';
-import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import CatStat from '../../components/CatStat';
 import ExpandButton from '../../components/ExpandButton';
 import Footer from '../../components/Footer';
+import SlimHeader from '../../components/SlimHeader';
 
 export default function Cat({ data }) {
   const [cat] = data[0].breeds;
@@ -22,9 +22,7 @@ export default function Cat({ data }) {
       </Head>
 
       <Container>
-        <LogoWrapper>
-          <Image src="/images/logo.svg" alt="Cat Wiki Logo" layout="fill" />
-        </LogoWrapper>
+        <SlimHeader />
 
         <HeroImgWrapper>
           <Image
@@ -141,24 +139,8 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0 0;
 
   background-color: ${(props) => props.theme.colors.bg};
-`;
-
-const LogoWrapper = styled.div`
-  position: relative;
-  width: 180px;
-  height: 80px;
-  transition: 0.4s;
-
-  margin-bottom: 1rem;
-  padding: 0 2rem 1rem;
-
-  &:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-  }
 `;
 
 const HeroImgWrapper = styled.div`
