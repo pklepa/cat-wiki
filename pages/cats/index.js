@@ -6,8 +6,6 @@ import Footer from '../../components/Footer';
 import SlimHeader from '../../components/SlimHeader';
 
 export default function CatList({ catList }) {
-  console.log(catList);
-
   return (
     <>
       <Head>

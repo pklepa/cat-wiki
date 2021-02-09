@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Image from 'next/image';
+import Autocomplete from './Autocomplete';
 
 function Header() {
   return (
@@ -14,7 +15,8 @@ function Header() {
         <h2>Get to know more about your cat breed</h2>
 
         <InputWrapper>
-          <input type="text" name="search" placeholder="Enter your breed" />
+          {/* <input type="text" name="search" placeholder="Enter your breed" /> */}
+          <Autocomplete />
 
           <div className="icon-wrapper">
             <Image src="/icons/SearchIcon.svg" width={18} height={18} />
@@ -96,16 +98,7 @@ const InputWrapper = styled.div`
   border-radius: 1.5rem;
 
   display: flex;
-
-  input {
-    flex: 1 2 50px;
-    min-width: 50px;
-    background: none;
-    font-size: 1rem;
-    border: none;
-    outline: none;
-    padding-right: 0.5rem;
-  }
+  position: relative;
 
   .icon-wrapper {
     flex: 0 0 auto;
