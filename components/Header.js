@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import Image from 'next/image';
 import Autocomplete from './Autocomplete';
+import { useRouter } from 'next/router';
 
-function Header() {
+function Header({ catList }) {
+  const [searchInput, setSearchInput] = useState('');
+  const [breedList, setBreedList] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    setBreedList(
+      catList.map((cat) => {
+        return {
+          name: cat.name,
+          id: cat.id,
+        };
+      })
+    );
+  }, []);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const test = breedList.find((cat) =>
+      cat.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    router.push(`/cats/${test.id}`);
+  }
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -14,13 +39,16 @@ function Header() {
 
         <h2>Get to know more about your cat breed</h2>
 
-        <InputWrapper>
-          {/* <input type="text" name="search" placeholder="Enter your breed" /> */}
-          <Autocomplete />
+        <InputWrapper onSubmit={handleSubmit}>
+          <Autocomplete
+            breedList={breedList}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+          />
 
-          <div className="icon-wrapper">
+          <button type="submit" className="icon-wrapper">
             <Image src="/icons/SearchIcon.svg" width={18} height={18} />
-          </div>
+          </button>
         </InputWrapper>
       </HeaderContent>
 
@@ -89,7 +117,7 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const InputWrapper = styled.div`
+const InputWrapper = styled.form`
   width: min(100%, 400px);
   padding: 0.5rem 1rem;
   margin: 1rem 0 0;
@@ -99,6 +127,13 @@ const InputWrapper = styled.div`
 
   display: flex;
   position: relative;
+
+  button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
 
   .icon-wrapper {
     flex: 0 0 auto;

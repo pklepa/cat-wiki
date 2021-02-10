@@ -1,51 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-// Temporary list of breeds
-const breeds = [
-  {
-    name: 'Egyptian Mau',
-  },
-  {
-    name: 'European Burmese',
-  },
-  {
-    name: 'Exotic Shorthair',
-  },
-  {
-    name: 'Savannah',
-  },
-  {
-    name: 'Scottish Fold',
-  },
-  {
-    name: 'Selkirk Rex',
-  },
-  {
-    name: 'Siamese',
-  },
-  {
-    name: 'Siberian',
-  },
-  {
-    name: 'Singapura',
-  },
-  {
-    name: 'Snowshoe',
-  },
-];
-
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = (value, suggestions) => {
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
-
-  // return inputLength === 0
-  //   ? []
-  //   : suggestions.filter(
-  //       (suggestion) =>
-  //         suggestion.name.toLowerCase().slice(0, inputLength) === inputValue
-  //     );
 
   return inputLength === 0
     ? []
@@ -54,15 +13,12 @@ const getSuggestions = (value, suggestions) => {
       );
 };
 
-function Autocomplete() {
-  const [inputValue, setInputValue] = useState('');
+function Autocomplete({ breedList, searchInput, setSearchInput }) {
   const [suggestionsArr, setSuggestionsArr] = useState([]);
 
   function handleChange(e) {
-    console.log(e.target.value);
-    setInputValue(e.target.value);
-    const mySugg = getSuggestions(e.target.value, breeds);
-    console.log(mySugg);
+    setSearchInput(e.target.value);
+    const mySugg = getSuggestions(e.target.value, breedList);
     setSuggestionsArr(mySugg);
   }
 
@@ -70,10 +26,11 @@ function Autocomplete() {
     <>
       <Container>
         <input
+          required
           type="text"
           name="search"
           placeholder="Enter your breed"
-          value={inputValue}
+          value={searchInput}
           onChange={handleChange}
         />
       </Container>
@@ -84,7 +41,7 @@ function Autocomplete() {
             <span
               key={suggestion.name}
               onClick={() => {
-                setInputValue(suggestion.name);
+                setSearchInput(suggestion.name);
                 setSuggestionsArr([]);
               }}
             >

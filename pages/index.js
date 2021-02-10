@@ -6,7 +6,7 @@ import MainArticle from '../components/MainArticle';
 import FeaturedArticle from '../components/FeaturedArticle';
 import Footer from '../components/Footer';
 
-export default function Home() {
+export default function Home({catList}) {
   return (
     <div>
       <Head>
@@ -15,13 +15,25 @@ export default function Home() {
       </Head>
 
       <Container>
-        <Header />
+        <Header catList={catList} />
         <MainArticle />
         <FeaturedArticle />
         <Footer />
       </Container>
     </div>
   );
+}
+
+// Fetches API data before Next generates the page
+export async function getStaticProps() {
+  const req = await fetch(
+    `https://api.thecatapi.com/v1/breeds?api_key=${process.env.CAT_API_KEY}`
+  );
+  const data = await req.json();
+
+  return {
+    props: { catList: data },
+  };
 }
 
 const Container = styled.main`
