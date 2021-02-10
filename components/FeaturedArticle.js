@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Image from 'next/image';
-import ExpandButton from './ExpandButton';
 import Link from 'next/link';
+import ExpandButton from './ExpandButton';
 
 function FeaturedArticle() {
   return (
@@ -123,7 +123,7 @@ const MobileImgWrapper = styled.div`
   min-height: 300px;
   width: 100%;
 
-  @media ${props => props.theme.devices.tablet} {
+  @media ${(props) => props.theme.devices.tablet} {
     display: none;
   }
 `;
@@ -131,7 +131,7 @@ const MobileImgWrapper = styled.div`
 const DesktopImgWrapper = styled.div`
   display: none;
 
-  @media ${props => props.theme.devices.tablet} {
+  @media ${(props) => props.theme.devices.tablet} {
     display: flex;
     justify-content: center;
 
@@ -140,7 +140,7 @@ const DesktopImgWrapper = styled.div`
     max-width: 611px;
   }
 
-  @media ${props => props.theme.devices.laptop} {
+  @media ${(props) => props.theme.devices.laptop} {
     margin-right: 2rem;
   }
 `;
