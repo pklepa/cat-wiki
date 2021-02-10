@@ -127,6 +127,7 @@ export async function getStaticPaths() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
 `;
 
@@ -134,6 +135,7 @@ const Content = styled.main`
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
 `;
 
 const Title = styled.h1`
@@ -164,6 +166,7 @@ const ArticleWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 1368px;
 
   background-color: ${(props) => props.theme.colors.grey[300]};
   border-radius: 2rem;
@@ -233,6 +236,12 @@ const ArticleWrapper = styled.div`
         font-weight: 700;
         margin: 2rem 0 0.5rem;
       }
+    }
+  }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    article {
+      max-width: 800px;
     }
   }
 `;
