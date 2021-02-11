@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+
+import styled from 'styled-components';
 import breedIds from '../../utils/breedIds';
 
 function randomCat() {
@@ -16,5 +19,31 @@ export default function Random() {
     router.push(`/cats/${random}`);
   }, []);
 
-  return <div></div>;
+  return (
+    <Container>
+      <LogoWrapper>
+        <Image src="/images/logo.svg" alt="Cat Wiki Logo" layout="fill" />
+      </LogoWrapper>
+    </Container>
+  );
 }
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  width: 100%;
+`;
+
+const LogoWrapper = styled.div`
+  position: relative;
+  width: 180px;
+  height: 80px;
+
+  @media ${(props) => props.theme.devices.tablet} {
+    width: 300px;
+    height: 100px;
+  }
+`;

@@ -92,10 +92,13 @@ export default function Cat({ data }) {
                 if (index === 0) return;
 
                 return (
-                  <a href={img.url} rel="noreferrer">
+                  <a
+                    key={`gallery-img-${index}`}
+                    href={img.url}
+                    rel="noreferrer"
+                  >
                     <div className="preview-img-wrapper">
                       <Image
-                        key={`gallery-img-${index}`}
                         className="preview-img"
                         src={img.url}
                         alt="Photo of a Savannah cat"
