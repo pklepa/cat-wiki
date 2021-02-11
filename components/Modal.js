@@ -14,9 +14,12 @@ const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 2rem;
 `;
 
-export default function Modal({ onClickOutside, children }) {
+export default function Modal({ targetId, onClickOutside, children }) {
+  console.log(targetId);
   function handleClick(e) {
     if (e.target === e.currentTarget) {
       onClickOutside();
@@ -25,6 +28,6 @@ export default function Modal({ onClickOutside, children }) {
 
   return createPortal(
     <Overlay onClick={handleClick}>{children}</Overlay>,
-    document.getElementById('root-home')
+    document.getElementById(targetId)
   );
 }

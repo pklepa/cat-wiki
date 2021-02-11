@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Head from 'next/head';
@@ -8,9 +8,12 @@ import SlimHeader from '../../components/SlimHeader';
 import CatStat from '../../components/CatStat';
 import ExpandButton from '../../components/ExpandButton';
 import Footer from '../../components/Footer';
+import Modal from '../../components/Modal';
 
 export default function Cat({ data }) {
   const [cat] = data[0].breeds;
+  const [imageToDisplay, setImageToDisplay] = useState();
+  const [showModal, setShowModal] = useState(false);
 
   const images = data.map((x) => {
     return { url: x.url, width: x.width, height: x.height };
@@ -22,11 +25,16 @@ export default function Cat({ data }) {
         <title>{cat.name} - Cat Wiki</title>
       </Head>
 
-      <Container>
+      <Container id="root-cat">
         <SlimHeader />
 
         <div className="intro-container">
-          <HeroImgWrapper>
+          <HeroImgWrapper
+            onClick={() => {
+              setImageToDisplay(images[0].url);
+              setShowModal(true);
+            }}
+          >
             <Image
               src={images[0].url}
               className="main-img"
@@ -92,20 +100,21 @@ export default function Cat({ data }) {
                 if (index === 0) return;
 
                 return (
-                  <a
+                  <div
+                    className="preview-img-wrapper"
+                    onClick={() => {
+                      setImageToDisplay(img.url);
+                      setShowModal(true);
+                    }}
                     key={`gallery-img-${index}`}
-                    href={img.url}
-                    rel="noreferrer"
                   >
-                    <div className="preview-img-wrapper">
-                      <Image
-                        className="preview-img"
-                        src={img.url}
-                        alt="Photo of a Savannah cat"
-                        layout="fill"
-                      />
-                    </div>
-                  </a>
+                    <Image
+                      className="preview-img"
+                      src={img.url}
+                      alt="Photo of this breed of cat"
+                      layout="fill"
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -113,6 +122,25 @@ export default function Cat({ data }) {
         </div>
 
         <Footer />
+
+        {showModal && (
+          <Modal onClickOutside={() => setShowModal(false)} targetId="root-cat">
+            <ModalContent>
+              <div className="preview-img-wrapper">
+                <Image
+                  className="preview-img"
+                  src={imageToDisplay}
+                  alt="Photo of this breed of cat"
+                  layout="fill"
+                />
+              </div>
+
+              <button className="close-btn" onClick={() => setShowModal(false)}>
+                X
+              </button>
+            </ModalContent>
+          </Modal>
+        )}
       </Container>
     </>
   );
@@ -397,5 +425,46 @@ const Gallery = styled.section`
     margin: 0 0 2rem;
     padding: 3rem;
     border-radius: 0 0 2rem 2rem;
+  }
+`;
+
+const ModalContent = styled.div`
+  background-color: ${(props) => props.theme.colors.grey[50]};
+  border-radius: 2rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+
+  position: relative;
+
+  .preview-img-wrapper {
+    width: 100%;
+    border-radius: 1rem;
+
+    height: 100%;
+
+    position: relative;
+
+    .preview-img {
+      object-fit: contain;
+      border-radius: 1rem;
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: ${(props) => props.theme.colors.bg};
+
+    font-size: 2rem;
+    background: none;
+    border: none;
+
+    cursor: pointer;
   }
 `;

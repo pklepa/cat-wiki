@@ -62,7 +62,7 @@ function Header({ catList }) {
       <HeroImageWrapper />
 
       {showModal && (
-        <Modal onClickOutside={() => setShowModal(false)}>
+        <Modal targetId="root-home" onClickOutside={() => setShowModal(false)}>
           <ModalContent>
             <h1>Oops, something went wrong.</h1>
 
