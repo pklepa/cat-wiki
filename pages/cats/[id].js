@@ -395,6 +395,7 @@ const Gallery = styled.section`
     min-height: 300px;
 
     position: relative;
+    cursor: pointer;
 
     .preview-img {
       object-fit: cover;
@@ -430,8 +431,8 @@ const Gallery = styled.section`
 
 const ModalContent = styled.div`
   background-color: ${(props) => props.theme.colors.grey[50]};
+  padding: 1rem;
   border-radius: 2rem;
-  padding: 3rem;
   display: flex;
   flex-direction: column;
 
@@ -448,6 +449,7 @@ const ModalContent = styled.div`
     height: 100%;
 
     position: relative;
+    cursor: pointer;
 
     .preview-img {
       object-fit: contain;
@@ -466,5 +468,9 @@ const ModalContent = styled.div`
     border: none;
 
     cursor: pointer;
+  }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    padding: 3rem;
   }
 `;

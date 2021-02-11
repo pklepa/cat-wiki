@@ -14,8 +14,11 @@ const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem 0;
 
-  padding: 2rem;
+  @media ${(props) => props.theme.devices.tablet} {
+    padding: 2rem;
+  }
 `;
 
 export default function Modal({ targetId, onClickOutside, children }) {
