@@ -6,7 +6,7 @@ import MainArticle from '../components/MainArticle';
 import FeaturedArticle from '../components/FeaturedArticle';
 import Footer from '../components/Footer';
 
-export default function Home({catList}) {
+export default function Home({ catList }) {
   return (
     <div>
       <Head>
@@ -14,7 +14,7 @@ export default function Home({catList}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container>
+      <Container id="root-home">
         <Header catList={catList} />
         <MainArticle />
         <FeaturedArticle />

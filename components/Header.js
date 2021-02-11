@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import Autocomplete from './Autocomplete';
 import { useRouter } from 'next/router';
+import Modal from './Modal';
 
 function Header({ catList }) {
   const [searchInput, setSearchInput] = useState('');
   const [breedList, setBreedList] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,7 +33,7 @@ function Header({ catList }) {
     if (selectedCat) {
       router.push(`/cats/${selectedCat.id}`);
     } else {
-      alert('Breed not found');
+      setShowModal(true);
     }
   }
 
@@ -58,6 +60,21 @@ function Header({ catList }) {
       </HeaderContent>
 
       <HeroImageWrapper />
+
+      {showModal && (
+        <Modal onClickOutside={() => setShowModal(false)}>
+          <ModalContent>
+            <h1>Oops, something went wrong.</h1>
+
+            <p>
+              No breed found for '<strong>{searchInput}</strong>', please try
+              again.
+            </p>
+
+            <button onClick={() => setShowModal(false)}>Close</button>
+          </ModalContent>
+        </Modal>
+      )}
     </HeaderContainer>
   );
 }
@@ -188,5 +205,37 @@ const HeroImageWrapper = styled.div`
     &::before {
       display: none;
     }
+  }
+`;
+
+const ModalContent = styled.div`
+  background-color: ${(props) => props.theme.colors.grey[50]};
+  border-radius: 2rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  min-width: min(100%, 400px);
+  max-width: 600px;
+
+  h1 {
+    color: ${(props) => props.theme.colors.bg};
+    font-size: 1.5rem;
+  }
+
+  p {
+    color: ${(props) => props.theme.colors.grey[500]};
+    font-weight: 400;
+    margin: 2rem 0;
+  }
+
+  button {
+    align-self: center;
+    padding: 0.5rem 1.5rem;
+    background-color: ${(props) => props.theme.colors.grey[400]};
+    color: ${(props) => props.theme.colors.grey[50]};
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
 `;
