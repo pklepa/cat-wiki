@@ -24,10 +24,15 @@ function Header({ catList }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const test = breedList.find((cat) =>
+    const selectedCat = breedList.find((cat) =>
       cat.name.toLowerCase().includes(searchInput.toLowerCase())
     );
-    router.push(`/cats/${test.id}`);
+
+    if (selectedCat) {
+      router.push(`/cats/${selectedCat.id}`);
+    } else {
+      alert('Breed not found');
+    }
   }
 
   return (
