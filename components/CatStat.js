@@ -42,8 +42,7 @@ const Container = styled.div`
 `;
 
 const StatBullet = styled.div`
-  background-color: ${(props) => (props.active ? '#FDBA74' : '#C1BCBA')};
-  box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+  background-color: ${(props) => (props.active ? '#f2b856' : '#cdc7c4')};
   height: 12px;
   border-radius: 15px;
 `;

@@ -253,7 +253,7 @@ const Intro = styled.section`
   margin-top: 10rem;
   border-radius: 2rem 2rem 0 0;
 
-  background-color: ${(props) => props.theme.colors.grey[300]};
+  background-color: ${(props) => props.theme.colors.grey[200]};
   position: relative;
 
   p {
@@ -271,8 +271,6 @@ const Intro = styled.section`
     margin-left: 2rem;
     padding: 3rem 2rem 2rem 10rem;
     border-radius: 15rem 2rem 0 0;
-
-    background-color: ${(props) => props.theme.colors.grey[200]};
 
     h2 {
       display: none;
@@ -316,7 +314,7 @@ const SectionTitle = styled.h2`
     width: 50%;
     height: 4px;
     border-radius: 3px;
-    background-color: ${(props) => props.theme.colors.grey[500]};
+    background-color: ${(props) => props.theme.colors.accent.light};
   }
 `;
 
@@ -330,7 +328,7 @@ const Characteristics = styled.section`
   padding: 0 2rem 2rem;
   border-radius: 0 0 2rem 2rem;
 
-  background-color: ${(props) => props.theme.colors.grey[300]};
+  background-color: ${(props) => props.theme.colors.grey[200]};
   position: relative;
 
   &::before {
@@ -338,7 +336,7 @@ const Characteristics = styled.section`
     position: absolute;
     width: 100%;
     height: 4px;
-    background-color: ${(props) => props.theme.colors.grey[300]};
+    background-color: ${(props) => props.theme.colors.grey[200]};
     top: -2px;
     left: 0;
   }
