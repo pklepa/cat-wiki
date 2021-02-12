@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 function SlideLeftWhenVisible({ children }) {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.6 });
+  const [ref, inView] = useInView({ threshold: 0.4 });
 
   useEffect(() => {
     if (inView) {
