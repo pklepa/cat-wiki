@@ -63,7 +63,16 @@ function Header({ catList }) {
         </p>
       </HeaderContent>
 
-      <HeroImageWrapper />
+      <HeroImageContainer>
+        <div className="hero-img-wrapper">
+          <Image
+            className="hero-img"
+            src="/images/heroImage.png"
+            width={1873}
+            height={808}
+          />
+        </div>
+      </HeroImageContainer>
 
       {showModal && (
         <Modal targetId="root-home" onClickOutside={() => setShowModal(false)}>
@@ -186,6 +195,61 @@ const InputWrapper = styled.form`
     display: flex;
     align-items: center;
     align-self: center;
+  }
+`;
+
+const HeroImageContainer = styled.div`
+  width: min(300px, 90vw);
+  height: min(300px, 90vw);
+
+  background-color: ${(props) => props.theme.colors.bg};
+  border-radius: 50%;
+
+  margin-bottom: 1rem;
+
+  position: relative;
+
+  .hero-img-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    .hero-img {
+      object-fit: cover;
+      object-position: 90% 50%;
+      border-radius: 50%;
+    }
+  }
+
+  &::before {
+    content: '';
+    width: min(310px, calc(85vw + 10px));
+    height: min(310px, calc(85vw + 10px));
+    background-color: ${(props) => props.theme.colors.grey[50]};
+    border-radius: 50%;
+
+    position: absolute;
+    top: -10px;
+    left: -1px;
+    z-index: -1;
+  }
+
+  @media ${(props) => props.theme.devices.tablet} {
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    flex: 2;
+
+    .hero-img-wrapper .hero-img {
+      border-radius: 0 0 3rem 0;
+    }
+
+    &::before {
+      display: none;
+    }
   }
 `;
 
