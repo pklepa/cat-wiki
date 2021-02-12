@@ -215,6 +215,7 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
 
+  align-self: flex-start;
   min-width: min(100%, 400px);
   max-width: 600px;
 
