@@ -19,9 +19,7 @@ function FeaturedArticle() {
             chemicals in your body which lower your stress and anxiety levels
           </p>
 
-          <Link href="/articles/why-should-you-have-a-cat">
-            <ExpandButton text="Read more" />
-          </Link>
+          <ExpandButton text="Read more" />
         </div>
 
         <MobileImgWrapper>

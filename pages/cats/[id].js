@@ -9,6 +9,8 @@ import CatStat from '../../components/CatStat';
 import ExpandButton from '../../components/ExpandButton';
 import Footer from '../../components/Footer';
 import Modal from '../../components/Modal';
+import { reveal } from '../../utils/animationVariants/variants';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Cat({ data }) {
   const [cat] = data[0].breeds;
@@ -25,7 +27,13 @@ export default function Cat({ data }) {
         <title>{cat.name} - Cat Wiki</title>
       </Head>
 
-      <Container id="root-cat">
+      <Container
+        id="root-cat"
+        initial="exit"
+        animate="enter"
+        exit="exit"
+        variants={reveal}
+      >
         <SlimHeader />
 
         <div className="intro-container">
@@ -175,7 +183,7 @@ export async function getStaticPaths() {
   };
 }
 
-const Container = styled.main`
+const Container = styled(motion.main)`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,26 +1,34 @@
 import styled from 'styled-components';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Head from 'next/head';
 import Header from '../components/Header';
 import MainArticle from '../components/MainArticle';
 import FeaturedArticle from '../components/FeaturedArticle';
 import Footer from '../components/Footer';
+import { reveal } from '../utils/animationVariants/variants';
 
 export default function Home({ catList }) {
   return (
-    <div>
+    <>
       <Head>
         <title>Cat Wiki - Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container id="root-home">
+      <Container
+        id="root-home"
+        initial="exit"
+        animate="enter"
+        exit="exit"
+        variants={reveal}
+      >
         <Header catList={catList} />
         <MainArticle />
         <FeaturedArticle />
         <Footer />
       </Container>
-    </div>
+    </>
   );
 }
 
@@ -36,7 +44,7 @@ export async function getStaticProps() {
   };
 }
 
-const Container = styled.main`
+const Container = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,9 +1,11 @@
+import { motion } from 'framer-motion';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Footer from '../../components/Footer';
 import SlimHeader from '../../components/SlimHeader';
+import { reveal } from '../../utils/animationVariants/variants';
 
 export default function CatList({ catList }) {
   return (
@@ -12,7 +14,7 @@ export default function CatList({ catList }) {
         <title>Full Breed List - Cat Wiki</title>
       </Head>
 
-      <Container>
+      <Container initial="exit" animate="enter" exit="exit" variants={reveal}>
         <SlimHeader />
 
         <Content>
@@ -64,7 +66,7 @@ export async function getStaticProps() {
   };
 }
 
-const Container = styled.main`
+const Container = styled(motion.main)`
   display: flex;
   flex-direction: column;
   align-items: center;
