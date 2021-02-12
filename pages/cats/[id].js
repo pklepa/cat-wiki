@@ -10,7 +10,8 @@ import ExpandButton from '../../components/ExpandButton';
 import Footer from '../../components/Footer';
 import Modal from '../../components/Modal';
 import { reveal } from '../../utils/animationVariants/variants';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import FadeInWhenVisible from '../../components/AnimationWrappers/FadeInWhenVisible';
 
 export default function Cat({ data }) {
   const [cat] = data[0].breeds;
@@ -108,21 +109,22 @@ export default function Cat({ data }) {
                 if (index === 0) return;
 
                 return (
-                  <div
-                    className="preview-img-wrapper"
-                    onClick={() => {
-                      setImageToDisplay(img.url);
-                      setShowModal(true);
-                    }}
-                    key={`gallery-img-${index}`}
-                  >
-                    <Image
-                      className="preview-img"
-                      src={img.url}
-                      alt="Photo of this breed of cat"
-                      layout="fill"
-                    />
-                  </div>
+                  <FadeInWhenVisible key={`gallery-img-${index}`}>
+                    <div
+                      className="preview-img-wrapper"
+                      onClick={() => {
+                        setImageToDisplay(img.url);
+                        setShowModal(true);
+                      }}
+                    >
+                      <Image
+                        className="preview-img"
+                        src={img.url}
+                        alt="Photo of this breed of cat"
+                        layout="fill"
+                      />
+                    </div>
+                  </FadeInWhenVisible>
                 );
               })}
             </div>

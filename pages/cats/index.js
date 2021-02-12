@@ -1,11 +1,13 @@
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { reveal } from '../../utils/animationVariants/variants';
+
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import styled from 'styled-components';
-import Footer from '../../components/Footer';
+
 import SlimHeader from '../../components/SlimHeader';
-import { reveal } from '../../utils/animationVariants/variants';
+import Footer from '../../components/Footer';
 
 export default function CatList({ catList }) {
   return (
@@ -24,7 +26,7 @@ export default function CatList({ catList }) {
             {catList.map((cat, index) => {
               return (
                 <li key={index}>
-                  <Link href={`/cats/${cat.id}`}>
+                  <Link href={`/cats/${cat.id}`} scroll={false}>
                     <div className="wrapper">
                       <div className="preview-img-wrapper">
                         <Image
