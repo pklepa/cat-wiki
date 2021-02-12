@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
