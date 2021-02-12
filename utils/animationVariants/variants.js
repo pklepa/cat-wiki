@@ -4,7 +4,7 @@ export const transition = {
 };
 
 export const reveal = {
-  exit: { y: '-10%', opacity: 0, transition },
+  exit: { y: '-20vh', opacity: 0, transition },
   enter: {
     y: '0%',
     opacity: 1,

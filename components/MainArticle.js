@@ -11,12 +11,12 @@ function MainArticle() {
       <Content>
         <span className="preface">Complete Breed List</span>
 
-        <Link href="/cats">
+        <Link href="/cats" scroll={false}>
           <h1>66+ Breeds for you to explore</h1>
         </Link>
 
         <LinksContainer>
-          <Link href="/cats/beng">
+          <Link href="/cats/beng" scroll={false}>
             <div className="wrapper">
               <div className="preview-img-wrapper">
                 <Image
@@ -30,7 +30,7 @@ function MainArticle() {
             </div>
           </Link>
 
-          <Link href="/cats/sava">
+          <Link scroll={false} href="/cats/sava">
             <div className="wrapper">
               <div className="preview-img-wrapper">
                 <Image
@@ -44,7 +44,7 @@ function MainArticle() {
             </div>
           </Link>
 
-          <Link href="/cats/norw">
+          <Link scroll={false} href="/cats/norw">
             <div className="wrapper">
               <div className="preview-img-wrapper">
                 <Image
@@ -58,7 +58,7 @@ function MainArticle() {
             </div>
           </Link>
 
-          <Link href="/cats/srex">
+          <Link scroll={false} href="/cats/srex">
             <div className="wrapper">
               <div className="preview-img-wrapper">
                 <Image

@@ -6,6 +6,9 @@ import Image from 'next/image';
 
 import Footer from '../../components/Footer';
 import SlimHeader from '../../components/SlimHeader';
+import { reveal } from '../../utils/animationVariants/variants';
+import { motion } from 'framer-motion';
+import FadeInWhenVisible from '../../components/AnimationWrappers/FadeInWhenVisible';
 
 export default function Article() {
   return (
@@ -14,7 +17,7 @@ export default function Article() {
         <title>Why should you have a cat? - Cat Wiki</title>
       </Head>
 
-      <Container>
+      <Container initial="exit" animate="enter" exit="exit" variants={reveal}>
         <SlimHeader />
         <Content>
           <Title>Why should you have a cat?</Title>
@@ -40,66 +43,78 @@ export default function Article() {
                 <Image src="/images/Mosaic.png" width={611} height={536} />
               </DesktopImgWrapper>
 
-              <h2>Cats can bathe themselves</h2>
-              <p>
-                Cats are clean pretty much 100 percent of the time. That means
-                you never have to take the time out of your day to perform the
-                somewhat painstaking task of washing and grooming your cat.
-              </p>
-
-              <h2>Cats will keep your house and yard rodent-free</h2>
-              <p>
-                If you are not a fan of rats, chipmunk, voles or mice in your
-                home, owning a cat will take care of that right away. Your cat
-                may even bring you its prize to make you proud!
-              </p>
-
-              <h2>Cats are low-maintenance and independent</h2>
-              <p>
-                If you think you do not have the time or energy to own a pet,
-                then a cat could be perfect for you. Taking care of a cat
-                requires less responsibility than some other animals. Those who
-                have full-time jobs can rest easy, knowing that their kitty can
-                take care of itself for the most part. And when you do have
-                extra time, cuddling up with your cat will feel better than
-                ever.
-              </p>
-
-              <h2>Cats are an eco-friendly pet choice</h2>
-              <p>
-                Living a “green” lifestyle can be difficult, but a cat is a
-                great choice for potential pet owners looking to stay
-                eco-friendly. Studies show that the lifetime resources needed to
-                feed and care for a cat have a smaller carbon footprint than for
-                other animals. Plus, most cats prefer fish to beef or corn,
-                which is better for the environment. You can feel good about
-                owning your kitty.
-              </p>
-
-              <h2>Cats can help reduce stress</h2>
-              <p>
-                We all get stressed out, and people have many different ways of
-                relieving their stress. Cat owners can reduce tensions by just
-                stroking their furry friend’s head. Petting a cat releases
-                endorphins into the brain, which makes you happier. Also, cats
-                have the softest fur!
-              </p>
-
-              <div className="closing-thoughts">
+              <FadeInWhenVisible>
+                <h2>Cats can bathe themselves</h2>
                 <p>
-                  There are so many more reasons that you should get a cat to
-                  fill your home with love. Check out your local shelter to find
-                  a kitty that really needs a home.
+                  Cats are clean pretty much 100 percent of the time. That means
+                  you never have to take the time out of your day to perform the
+                  somewhat painstaking task of washing and grooming your cat.
                 </p>
+              </FadeInWhenVisible>
 
-                <span>by</span>
-                <p>Paige Plumblee & Lauren Adams, AnimalKind Volunteers</p>
-
+              <FadeInWhenVisible>
+                <h2>Cats will keep your house and yard rodent-free</h2>
                 <p>
-                  visit <a href="https://animalkind.org/">AnimalKind</a> for
-                  more
+                  If you are not a fan of rats, chipmunk, voles or mice in your
+                  home, owning a cat will take care of that right away. Your cat
+                  may even bring you its prize to make you proud!
                 </p>
-              </div>
+              </FadeInWhenVisible>
+
+              <FadeInWhenVisible>
+                <h2>Cats are low-maintenance and independent</h2>
+                <p>
+                  If you think you do not have the time or energy to own a pet,
+                  then a cat could be perfect for you. Taking care of a cat
+                  requires less responsibility than some other animals. Those
+                  who have full-time jobs can rest easy, knowing that their
+                  kitty can take care of itself for the most part. And when you
+                  do have extra time, cuddling up with your cat will feel better
+                  than ever.
+                </p>
+              </FadeInWhenVisible>
+
+              <FadeInWhenVisible>
+                <h2>Cats are an eco-friendly pet choice</h2>
+                <p>
+                  Living a “green” lifestyle can be difficult, but a cat is a
+                  great choice for potential pet owners looking to stay
+                  eco-friendly. Studies show that the lifetime resources needed
+                  to feed and care for a cat have a smaller carbon footprint
+                  than for other animals. Plus, most cats prefer fish to beef or
+                  corn, which is better for the environment. You can feel good
+                  about owning your kitty.
+                </p>
+              </FadeInWhenVisible>
+
+              <FadeInWhenVisible>
+                <h2>Cats can help reduce stress</h2>
+                <p>
+                  We all get stressed out, and people have many different ways
+                  of relieving their stress. Cat owners can reduce tensions by
+                  just stroking their furry friend’s head. Petting a cat
+                  releases endorphins into the brain, which makes you happier.
+                  Also, cats have the softest fur!
+                </p>
+              </FadeInWhenVisible>
+
+              <FadeInWhenVisible>
+                <div className="closing-thoughts">
+                  <p>
+                    There are so many more reasons that you should get a cat to
+                    fill your home with love. Check out your local shelter to
+                    find a kitty that really needs a home.
+                  </p>
+
+                  <span>by</span>
+                  <p>Paige Plumblee & Lauren Adams, AnimalKind Volunteers</p>
+
+                  <p>
+                    visit <a href="https://animalkind.org/">AnimalKind</a> for
+                    more
+                  </p>
+                </div>
+              </FadeInWhenVisible>
             </article>
           </ArticleWrapper>
         </Content>
@@ -124,7 +139,7 @@ export async function getStaticPaths() {
   };
 }
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;

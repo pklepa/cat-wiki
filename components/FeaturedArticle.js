@@ -10,7 +10,7 @@ function FeaturedArticle() {
     <Container>
       <Content>
         <div className="text-wrapper">
-          <Link href="/articles/why-should-you-have-a-cat">
+          <Link href="/articles/why-should-you-have-a-cat" scroll={false}>
             <h1>Why should you have a cat?</h1>
           </Link>
 
