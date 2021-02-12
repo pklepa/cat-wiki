@@ -99,6 +99,7 @@ const HeaderContainer = styled.div`
     padding: 0 2rem 0;
 
     height: 80vh;
+    max-height: 800px;
   }
 `;
 
