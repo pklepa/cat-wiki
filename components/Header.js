@@ -123,7 +123,7 @@ const HeaderContent = styled.div`
   p {
     margin-top: 1rem;
     text-align: center;
-    width: 100%;
+    width: min(100%, 400px);
     color: ${(props) => props.theme.colors.grey[300]};
 
     a {
