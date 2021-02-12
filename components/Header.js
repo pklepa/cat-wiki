@@ -253,48 +253,6 @@ const HeroImageContainer = styled.div`
   }
 `;
 
-const HeroImageWrapper = styled.div`
-  width: min(300px, 90vw);
-  height: min(300px, 90vw);
-
-  background-color: ${(props) => props.theme.colors.bg};
-  background-size: cover;
-  background-position: 90% 50%;
-  background-image: url('./images/heroImage.png');
-
-  border-radius: 50%;
-
-  margin-bottom: 1rem;
-
-  position: relative;
-
-  &::before {
-    content: '';
-    width: min(310px, calc(85vw + 10px));
-    height: min(310px, calc(85vw + 10px));
-    background-color: #fafaf9;
-    border-radius: 50%;
-
-    position: absolute;
-    top: -10px;
-    left: -1px;
-    z-index: -1;
-  }
-
-  @media ${(props) => props.theme.devices.tablet} {
-    border-radius: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-
-    flex: 2;
-
-    &::before {
-      display: none;
-    }
-  }
-`;
-
 const ModalContent = styled.div`
   background-color: ${(props) => props.theme.colors.grey[50]};
   border-radius: 2rem;
