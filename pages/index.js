@@ -7,7 +7,8 @@ import MainArticle from '../components/MainArticle';
 import FeaturedArticle from '../components/FeaturedArticle';
 import Footer from '../components/Footer';
 import { reveal } from '../utils/animationVariants/variants';
-import FadeInWhenVisible from '../components/FadeInWhenVisible';
+import SlideLeftWhenVisible from '../components/AnimationWrappers/SlideLeftWhenVisible';
+import SlideRightWhenVisible from '../components/AnimationWrappers/SlideRightWhenVisible';
 
 export default function Home({ catList }) {
   return (
@@ -25,10 +26,12 @@ export default function Home({ catList }) {
         variants={reveal}
       >
         <Header catList={catList} />
-        <FadeInWhenVisible>
+        <SlideLeftWhenVisible>
           <MainArticle />
-        </FadeInWhenVisible>
-        <FeaturedArticle />
+        </SlideLeftWhenVisible>
+        <SlideRightWhenVisible>
+          <FeaturedArticle />
+        </SlideRightWhenVisible>
         <Footer />
       </Container>
     </>
@@ -53,4 +56,6 @@ const Container = styled(motion.div)`
   align-items: center;
 
   width: 100%;
+
+  overflow-x: hidden;
 `;
