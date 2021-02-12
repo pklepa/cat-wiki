@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Autocomplete from './Autocomplete';
 import { useRouter } from 'next/router';
 import Modal from './Modal';
+import Link from 'next/link';
 
 function Header({ catList }) {
   const [searchInput, setSearchInput] = useState('');
@@ -57,6 +58,9 @@ function Header({ catList }) {
             <Image src="/icons/SearchIcon.svg" width={18} height={18} />
           </button>
         </InputWrapper>
+        <p>
+          or try a <Link href="/random">random</Link> breed
+        </p>
       </HeaderContent>
 
       <HeroImageWrapper />
@@ -114,6 +118,24 @@ const HeaderContent = styled.div`
 
     max-width: 290px;
     margin: 1rem 0;
+  }
+
+  p {
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
+    color: ${(props) => props.theme.colors.grey[300]};
+
+    a {
+      color: ${(props) => props.theme.colors.accent.light};
+      font-weight: 600;
+      transition: 0.4s;
+
+      &:hover,
+      &:focus {
+        color: ${(props) => props.theme.colors.accent.dark};
+      }
+    }
   }
 
   @media ${(props) => props.theme.devices.tablet} {
