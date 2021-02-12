@@ -13,9 +13,15 @@ function SlimHeader() {
       </Link>
 
       <nav>
-        <Link href="/about">About</Link>
-        <Link href="/cats">Full Cat List</Link>
-        <Link href="/random">Random Cat</Link>
+        <Link href="/about" scroll={false}>
+          About
+        </Link>
+        <Link href="/cats" scroll={false}>
+          Full Cat List
+        </Link>
+        <Link href="/random" scroll={false}>
+          Random Cat
+        </Link>
       </nav>
     </Container>
   );

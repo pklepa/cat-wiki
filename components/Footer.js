@@ -7,16 +7,22 @@ import Link from 'next/link';
 function Footer() {
   return (
     <Container>
-      <Link href="/">
+      <Link href="/" scroll={false}>
         <LogoWrapper>
           <Image src="/images/logo.svg" alt="Cat Wiki Logo" layout="fill" />
         </LogoWrapper>
       </Link>
 
       <LinksWrapper>
-        <Link href="/about">About</Link>
-        <Link href="/cats">Full Cats List</Link>
-        <Link href="/random">Random Cat</Link>
+        <Link href="/about" scroll={false}>
+          About
+        </Link>
+        <Link href="/cats" scroll={false}>
+          Full Cats List
+        </Link>
+        <Link href="/random" scroll={false}>
+          Random Cat
+        </Link>
       </LinksWrapper>
 
       <Credits>
