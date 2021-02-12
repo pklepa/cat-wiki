@@ -7,6 +7,7 @@ import MainArticle from '../components/MainArticle';
 import FeaturedArticle from '../components/FeaturedArticle';
 import Footer from '../components/Footer';
 import { reveal } from '../utils/animationVariants/variants';
+import FadeInWhenVisible from '../components/FadeInWhenVisible';
 
 export default function Home({ catList }) {
   return (
@@ -24,7 +25,9 @@ export default function Home({ catList }) {
         variants={reveal}
       >
         <Header catList={catList} />
-        <MainArticle />
+        <FadeInWhenVisible>
+          <MainArticle />
+        </FadeInWhenVisible>
         <FeaturedArticle />
         <Footer />
       </Container>
