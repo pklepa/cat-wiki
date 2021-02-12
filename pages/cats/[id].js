@@ -95,7 +95,7 @@ export default function Cat({ data }) {
             </StatsWrapper>
 
             <a href={cat.wikipedia_url}>
-              <ExpandButton text="Read more" />
+              <ExpandButton text="Read more" to={cat.wikipedia_url} />
             </a>
           </Characteristics>
         </div>

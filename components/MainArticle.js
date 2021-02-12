@@ -73,7 +73,7 @@ function MainArticle() {
           </Link>
         </LinksContainer>
 
-        <ExpandButton text="See more" />
+        <ExpandButton text="See more" to="/cats" />
       </Content>
     </Container>
   );

@@ -23,7 +23,6 @@ const Overlay = styled(motion.div)`
 `;
 
 export default function Modal({ targetId, onClickOutside, children }) {
-  console.log(targetId);
   function handleClick(e) {
     if (e.target === e.currentTarget) {
       onClickOutside();
