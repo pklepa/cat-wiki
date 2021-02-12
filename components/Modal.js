@@ -1,8 +1,10 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
+import { AnimatePresence, motion } from 'framer-motion';
+import { revealStill } from '../utils/animationVariants/variants';
 
-const Overlay = styled.div`
+const Overlay = styled(motion.div)`
   position: fixed;
   top: 0;
   bottom: 0;
@@ -29,7 +31,17 @@ export default function Modal({ targetId, onClickOutside, children }) {
   }
 
   return createPortal(
-    <Overlay onClick={handleClick}>{children}</Overlay>,
+    <AnimatePresence exitBeforeEnter>
+      <Overlay
+        initial="exit"
+        animate="enter"
+        exit="exit"
+        variants={revealStill}
+        onClick={handleClick}
+      >
+        {children}
+      </Overlay>
+    </AnimatePresence>,
     document.getElementById(targetId)
   );
 }

@@ -9,7 +9,7 @@ import CatStat from '../../components/CatStat';
 import ExpandButton from '../../components/ExpandButton';
 import Footer from '../../components/Footer';
 import Modal from '../../components/Modal';
-import { reveal } from '../../utils/animationVariants/variants';
+import { pop, reveal } from '../../utils/animationVariants/variants';
 import { motion } from 'framer-motion';
 import FadeInWhenVisible from '../../components/AnimationWrappers/FadeInWhenVisible';
 
@@ -135,7 +135,12 @@ export default function Cat({ data }) {
 
         {showModal && (
           <Modal onClickOutside={() => setShowModal(false)} targetId="root-cat">
-            <ModalContent>
+            <ModalContent
+              initial="exit"
+              animate="enter"
+              exit="exit"
+              variants={pop}
+            >
               <div className="preview-img-wrapper">
                 <Image
                   className="preview-img"
@@ -437,7 +442,7 @@ const Gallery = styled.section`
   }
 `;
 
-const ModalContent = styled.div`
+const ModalContent = styled(motion.div)`
   background-color: ${(props) => props.theme.colors.grey[50]};
   padding: 1rem;
   border-radius: 2rem;
