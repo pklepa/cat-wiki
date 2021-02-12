@@ -442,11 +442,14 @@ const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 100%;
-  max-width: 1440px;
+  width: calc(100% - 4rem);
+  max-width: calc(1440px - 4rem);
   height: 100%;
+  max-height: calc(100vh - 4rem);
 
-  position: relative;
+  position: sticky;
+  top: 2rem;
+  left: 2rem;
 
   .preview-img-wrapper {
     width: 100%;
