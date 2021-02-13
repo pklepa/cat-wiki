@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
-function ExpandButton({ text, to }) {
+function ExpandButton({ text, to = '/' }) {
   return (
     <Link href={to}>
       <Container className="btn-expand">
