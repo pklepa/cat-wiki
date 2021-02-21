@@ -16,6 +16,17 @@ export default function Home({ catList }) {
       <Head>
         <title>Cat Wiki - Home</title>
         <link rel="icon" href="/favicon.ico" />
+
+        <meta property="og:title" content="Cat Wiki - Home" />
+        <meta
+          property="og:description"
+          content="Get to know the details of over 66 different cat breeds from all around the world."
+        />
+        <meta
+          property="og:image"
+          content="https://user-images.githubusercontent.com/22618438/107892064-9126bd00-6f1a-11eb-9f48-f8f564756383.png"
+        />
+        <meta property="og:url" content="https://cat-wiki.pklepa.vercel.app/" />
       </Head>
 
       <Container
